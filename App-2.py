@@ -24,11 +24,15 @@ class ObjReq:
 
         output = {}
 
-        if data['method'] == 'on_get':
-            output['name'] = doc.get('images')[0].get('Name')
+        if 'method' not in data:
+            resp.status = falcon.HTTP_501
+            output['name'] = 'Error, No method found in the request.'
         else:
-            resp.status = falcon.HTTP_404
-            output['name'] = None
+            if data['method'] == 'on_get':
+                output['name'] = doc.get('images')[0].get('Name')
+            else:
+                resp.status = falcon.HTTP_404
+                output['name'] = None
 
         resp.body = json.dumps(output)
 
