@@ -5,7 +5,7 @@ from waitress import serve
 
 class ObjReq:
     def on_get(self, req, resp):
-        dic = {'Name':'Abhay','Age':'26', 'Status':'Employed', 'Type':'IT'}
+        dic = {'Name': 'Abhay', 'Age': 26, 'Status': 'Employed', 'Type': 'IT'}
 
         doc = {
             'images': [
